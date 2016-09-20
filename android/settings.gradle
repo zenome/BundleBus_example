@@ -1,0 +1,5 @@
+rootProject.name = 'BundleBusExample'
+
+include ':app'
+include ':BundleBus-client'
+project(':BundleBus-client').projectDir = new File(rootProject.projectDir, '../node_modules/BundleBus-client/android/app')
