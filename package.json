@@ -6,6 +6,10 @@
     "start": "node node_modules/react-native/local-cli/cli.js start"
   },
   "dependencies": {
+<<<<<<< HEAD
+=======
+    "bundlebus-client": "*",
+>>>>>>> origin/master
     "react": "15.3.2",
     "react-native": "^0.33.0"
   }
