@@ -22,6 +22,7 @@
   NSString *appModuleName = @"YOUR_MODULE_NAME";
   
   BundleBus *bundlebus = [[BundleBus alloc] init];
+  //[bundlebus configServerAddressAndPort:@"http://localhost" port:3000];
   [bundlebus silentUpdate:appKey];
   
   NSURL *jsCodeLocation;
