@@ -1,4 +1,11 @@
 node_modules
 npm-debug.log
+android/.gradle/
+android/.idea/
+android/app/build/
+android/build/
+android/app/*.iml
+android/*.iml
+android/local.properties
 
 .bundlebus.config
