@@ -16,14 +16,31 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  NSString *appName = @"YOUR_REACTNATIVE_APP_NAME";  // name value in ../../package.json
+  NSString *appKey = @"YOUR_BUNDLEBUS_APP_KEY";      // returned after bundlebus register
+  BundleBus *bundlebus = [[BundleBus alloc] init];
+  [bundlebus silentUpdate:appKey];
+    
   NSURL *jsCodeLocation;
 
-  jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index.ios" fallbackResource:nil];
+  jsCodeLocation = [bundlebus bundleUrl:appKey];  // nil or latest version of bundle location 
+  RCTRootView *rootView;
+  if(jsCodeLocation != nil) {
+    rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
+                                           moduleName:appName
+                                    initialProperties:nil
+                                        launchOptions:launchOptions];
+  }
+  else {
+    // Original sample code from React Native
+    jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index.ios" fallbackResource:nil];
 
-  RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
-                                                      moduleName:@"BundleBusExample"
-                                               initialProperties:nil
-                                                   launchOptions:launchOptions];
+    rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
+                                           moduleName:appName
+                                    initialProperties:nil
+                                        launchOptions:launchOptions];
+  }
+
   rootView.backgroundColor = [[UIColor alloc] initWithRed:1.0f green:1.0f blue:1.0f alpha:1];
 
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
